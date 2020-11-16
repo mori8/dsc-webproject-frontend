@@ -2,33 +2,18 @@ import React, { Component } from 'react';
 import './App.css'
 import Header from '../components/Header';
 import Board from '../components/Board';
+import { Route } from 'react-router-dom';
+import Article from '../components/Article';
+import CreateArticle from '../components/CreateArticle';
 
 class App extends Component {
-  state = {
-    information: [{
-      id: "1",
-      title: "hi! this is test",
-      author: "soo",
-      date: "2020-11-14",
-      hits: 0
-    },
-    {
-      id: "2",
-      title: "엥 이게 되네 읭 엥",
-      author: "soo",
-      date: "2020-11-15",
-      hits: 0
-    }
-  ],
-  }
-  // handleCreate?
-
   render() {
-    const { information } = this.state;
     return (
       <div className="App">
         <Header/>
-        <Board data={information}/>
+        <Route exact path="/board" component={Board}/>
+        <Route path="/board/:id" component={Article}/>
+        <Route path="/create" component={CreateArticle}/>
       </div>
     );
   }

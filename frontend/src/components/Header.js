@@ -6,9 +6,9 @@ class Header extends Component {
         return (
             <Fragment>
                 <header className="header">
-                    <span>리액트처음해봄🌻</span>
+                    <a href="/board" className="logo"><span>리액트처음해봄🌻</span></a>
                     <div className="spacer"></div>
-                    <button type="button" className="btn btn-info">글쓰기</button>
+                    <a href="/create"><button type="button" className="btn createBtn">글쓰기</button></a>
                 </header>
             </Fragment>
         );
