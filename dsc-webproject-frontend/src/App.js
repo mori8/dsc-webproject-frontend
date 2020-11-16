@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
+import ArticleForm from './components/ArticleForm';
 import ArticleList from './components/ArticleList';
 import Header from './components/Header';
 import customAxios from './customAxios';
@@ -30,6 +31,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <ArticleList data={information}/>
+        <ArticleForm/>
       </div>
     );
   }

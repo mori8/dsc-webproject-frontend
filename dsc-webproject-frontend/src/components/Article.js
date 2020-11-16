@@ -7,7 +7,7 @@ class article extends Component {
 
         return (
             <tr>
-                <td>{id}</td><td><a href='#' className="black">{title}</a></td><td>{author}</td><td>{date}</td><td>{hits}</td>
+                <td>{id}</td><td><a href='/#' className="black">{title}</a></td><td>{author}</td><td>{date}</td><td>{hits}</td>
             </tr>
         );
     }
