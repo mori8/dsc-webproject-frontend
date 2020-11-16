@@ -13,3 +13,4 @@ class article extends Component {
     }
 }
 
+export default article;
