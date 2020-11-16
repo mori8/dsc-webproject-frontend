@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css'
-import ArticleList from './components/ArticleList';
-import Header from './components/Header';
-import customAxios from './customAxios';
+import ArticleList from '/components/ArticleList';
+import Header from '/components/Header';
+import customAxios from '../customAxios';
 
 class App extends Component {
   state = {

@@ -7,7 +7,7 @@
 .header {
   width: 100%;
   height: 55px;
-  display:table;
+  display: flex;
   background-color: #282c34;
   margin-bottom: 10px;
   align-items: center;
@@ -16,19 +16,27 @@
 
 .header > span {
   margin: 0 auto;
-  font-size: 1.2rem;
-  display: table-cell;
+  font-size: 1.1rem;
+  font-weight: 600;
   vertical-align: middle;
   padding-right: 1rem;
   padding-left: 1rem;
   color: floralwhite;
 }
 
+.header > .spacer {
+  flex-grow: 1;
+}
+
+.header > button {
+  margin-right: 7px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
