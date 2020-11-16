@@ -5,25 +5,9 @@ import ArticleList from './components/ArticleList';
 import Header from './components/Header';
 import customAxios from './customAxios';
 
-class App extends Component {
-  state = {
-    information: [{
-      id: "1",
-      title: "hi! this is test",
-      author: "soo",
-      date: "2020-11-14",
-      hits: 0
-    },
-    {
-      id: "2",
-      title: "엥 이게 되네 읭 엥",
-      author: "soo",
-      date: "2020-11-15",
-      hits: 0
-    }
-  ],
-  }
-  // handleCreate?
+function App() {
+  // IP주소 변수 선언
+  const [ip, setIp] = useState('');
 
   render() {
     const { information } = this.state;
@@ -35,6 +19,22 @@ class App extends Component {
       </div>
     );
   }
+
+  // 첫번째 렌더링을 다 마친 후 실행합니다.
+  useEffect(
+    () => {
+      // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
+      customAxios('/ip', callback);
+    }, []
+  );
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        이 기기의 IP주소는 {ip}입니다.
+      </header>
+    </div>
+  );
 }
 
 export default App;

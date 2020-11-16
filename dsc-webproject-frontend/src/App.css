@@ -1,7 +1,5 @@
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App {
+  text-align: center;
 }
 
 .header {
@@ -48,16 +46,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.black {
-  color: black;
-  display: inline-block;
-}
-
-.table > thead {
-  font-weight: bold;
-  border-bottom: 2px solid #dee2e6;
 }
 
 @keyframes App-logo-spin {
