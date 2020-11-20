@@ -6,7 +6,7 @@ class Board extends Component {
         information: [{
           id: "1",
           title: "hi! this is test",
-          description: "Is it romantic how all my elegies\
+          body: "Is it romantic how all my elegies\
           Eulogize me?\
           I'm not cut out for all these cynical clones\
           These hunters with cellphones",
@@ -17,7 +17,7 @@ class Board extends Component {
         {
           id: "2",
           title: "엥 이게 되네 읭 엥",
-          description: "Take me to the lakes, where all the poets went to die\
+          body: "Take me to the lakes, where all the poets went to die\
           I don't belong, and my beloved, neither do you\
           Those Windermere peaks look like a perfect place to cry\
           I'm settin' off, but not without my muse",
