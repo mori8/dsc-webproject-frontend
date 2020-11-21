@@ -8,7 +8,7 @@ class Header extends Component {
                 <header className="header">
                     <a href="/board" className="logo"><span>리액트처음해봄🌻</span></a>
                     <div className="spacer"></div>
-                    <a href="/create"><button type="button" className="btn createBtn">글쓰기</button></a>
+                    <a href="/create"><button type="button" className="btn btn-info createBtn">글쓰기</button></a>
                 </header>
             </Fragment>
         );

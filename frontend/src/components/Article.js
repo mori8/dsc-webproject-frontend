@@ -1,58 +1,21 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
+import useAsync from '../lib/useAsync';
+import '../shared/App.css'
 
 /* 참고자료
 * https://react.vlpt.us/integrate-api/01-basic.html
 */
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'LOADING':
-            return {
-                loading: true,
-                data: null,
-                error: null
-            };
-        case 'SUCCESS':
-            return {
-                loading: false,
-                data: action.data,
-                error: null
-            };
-        case 'ERROR':
-            return {
-                loading: false,
-                data: null,
-                error: action.error
-            };
-        default:
-            throw new Error(`Unhandled action type: ${action.type}`);
-    }
+const getUsers = async () => {
+    const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/posts'
+    );
+    return response.data;
 }
 
 const Article = ({ match }) => {
-    const [state, dispatch] = useReducer(reducer, {
-        loading: false,
-        data: null,
-        error: null
-    });
-
-    const fetchArticles = async () => {
-        dispatch({ type: 'LOADING' });
-        try {
-            const response = await axios.get(
-                'https://jsonplaceholder.typicode.com/posts'
-            );
-            dispatch({ type: 'SUCCESS', data: response.data });
-        } catch (e) {
-            dispatch({ type: 'ERROR', error: e });
-        }
-    };
-
-    useEffect(() => {
-        fetchArticles();
-    }, []);
-
+    const [state, refetch] = useAsync(getUsers, []);
     const { loading, data: articles, error } = state;
     let article = null;
 
@@ -65,9 +28,14 @@ const Article = ({ match }) => {
     }
 
     return (
-        <div>
-            <h2>{article.title}</h2>
-            <p>{article.body}</p>
+        <div className="article" key={article.id}>
+            <h2 className="article-title">{article.title}</h2>
+            <div className="article-info">
+                <p className="article-userid">userId: {article.userId}</p>
+                <div className="spacer"></div>
+                <p className="article-id">글번호: {article.id}</p>
+            </div>
+            <p className="article-body">{article.body}</p>
         </div>
     )
 }

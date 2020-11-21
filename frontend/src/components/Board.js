@@ -10,7 +10,7 @@ class Board extends Component {
           Eulogize me?\
           I'm not cut out for all these cynical clones\
           These hunters with cellphones",
-          author: "soo",
+          username: "soo",
           date: "2020-11-14",
           hits: 0
         },
@@ -21,7 +21,7 @@ class Board extends Component {
           I don't belong, and my beloved, neither do you\
           Those Windermere peaks look like a perfect place to cry\
           I'm settin' off, but not without my muse",
-          author: "soo",
+          username: "soo",
           date: "2020-11-15",
           hits: 0
         }
