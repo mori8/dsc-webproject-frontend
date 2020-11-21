@@ -1,36 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 /* 참고자료
 * https://react.vlpt.us/integrate-api/01-basic.html
 */
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'LOADING':
+            return {
+                loading: true,
+                data: null,
+                error: null
+            };
+        case 'SUCCESS':
+            return {
+                loading: false,
+                data: action.data,
+                error: null
+            };
+        case 'ERROR':
+            return {
+                loading: false,
+                data: null,
+                error: action.error
+            };
+        default:
+            throw new Error(`Unhandled action type: ${action.type}`);
+    }
+}
+
 const Article = ({ match }) => {
-    const [articles, setArticles] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    let article = null;
+    const [state, dispatch] = useReducer(reducer, {
+        loading: false,
+        data: null,
+        error: null
+    });
+
+    const fetchArticles = async () => {
+        dispatch({ type: 'LOADING' });
+        try {
+            const response = await axios.get(
+                'https://jsonplaceholder.typicode.com/posts'
+            );
+            dispatch({ type: 'SUCCESS', data: response.data });
+        } catch (e) {
+            dispatch({ type: 'ERROR', error: e });
+        }
+    };
 
     useEffect(() => {
-        const fetchArticles = async () => {
-            try {
-                // 요청이 시작되면 error와 articles를 초기화하고
-                setError(null);
-                setArticles(null);
-                // loading의 상태를 true로 바꿔주기
-                setLoading(true);
-                const response = await axios.get(
-                    'https://jsonplaceholder.typicode.com/posts'
-                );
-                setArticles(response.data); // 글 정보들은 response 안에 저장되어 있음
-            } catch (e) {
-                setError(e);
-            }
-            setLoading(false);
-        };
-
         fetchArticles();
     }, []);
+
+    const { loading, data: articles, error } = state;
+    let article = null;
 
     if (loading) return <div>로딩중...</div>;
     if (error) return <div>에러가 발생했습니다.</div>;
