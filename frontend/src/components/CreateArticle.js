@@ -78,7 +78,6 @@ class CreateArticle extends Component {
         const btnStyle = {
             margin: "5px",
         }
-        // TODO: onSubmit 구현
         return (
             <form style={formStyle} onSubmit={this.handleFormSubmit}>
                 <h3>글 작성하기</h3>
