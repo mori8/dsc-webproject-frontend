@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from 'react';
-
+// TODO: 상태관리 하지마
 function reducer(state, action) {
+  switch (action.type) {
     case 'LOADING':
       return {
         loading: true,
