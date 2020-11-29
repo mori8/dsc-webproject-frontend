@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArticleItem from './ArticleItem';
+import CreateArticle from './CreateArticle';
 
 class Board extends Component {
     state = {
@@ -27,25 +28,31 @@ class Board extends Component {
         }
       ],
     }
+
     render() {
         const style = {
             width: "85%",
             margin: "20px auto",
         }
-
+ 
         const list = this.state.information.map(
-            info => (<ArticleItem info={info} key={info.id}/>)
-        );
+            info => (<ArticleItem stateRefresh={this.stateRefresh} info={info} key={info.id}/>));
+
         return (
             <div>
                <table className="table" style={style}>
                    <thead>
-                        <tr><td>번호</td><td>제목</td><td>작성자</td><td>작성일</td><td>조회수</td></tr>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>작성일</td>
+                            <td>조회수</td>
+                        </tr>
                    </thead>
                    <tbody>
                         {list}
                    </tbody>
-                   
                </table>
             </div>
         );

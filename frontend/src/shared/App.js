@@ -9,7 +9,7 @@ import CreateArticle from '../components/CreateArticle';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App">        
         <Header/>
         <Route exact path="/board" component={Board}/>
         <Route path="/board/:id" component={Article}/>

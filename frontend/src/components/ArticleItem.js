@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Board from "./Board";
+import DeleteArticle from './DeleteArticle';
 
 class articleItem extends Component {
     render() {
@@ -12,6 +14,7 @@ class articleItem extends Component {
                 <td>{username}</td>
                 <td>{date}</td>
                 <td>{hits}</td>
+                <td><DeleteArticle id={this.props.id}>삭제</DeleteArticle></td>
             </tr>
         );
     }
