@@ -14,7 +14,7 @@ class articleItem extends Component {
                 <td>{username}</td>
                 <td>{date}</td>
                 <td>{hits}</td>
-                <td><DeleteArticle id={this.props.id}>삭제</DeleteArticle></td>
+                <td><DeleteArticle stateRefresh={this.props.stateRefresh} id={this.props.id}>삭제</DeleteArticle></td>
             </tr>
         );
     }
